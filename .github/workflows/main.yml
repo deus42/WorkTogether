@@ -54,7 +54,7 @@ jobs:
           npm install -g near-cli
           NPM_PACKAGES="${HOME}/.npm-packages"
           export PATH="$PATH:$NPM_PACKAGES/bin"
-          near add-key worktogether.testnet ${{ secrets.TESTNET_ACCESS_KEY }}
+          near generate-key worktogether.testnet --seedPhrase="${{ secrets.WORKTOGETHER_SEED_PHRASE }}"
           npm run build:contract:debug && near deploy --accountId worktogether.testnet
   
       - name: Deploy Front-End 🚀
